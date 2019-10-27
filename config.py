@@ -1,8 +1,8 @@
 # Global
-DATASET_PATH = './dataset'
-ANNOTATIONS_PATH = './dataset/csv'
+DATASET_PATH = '/home/david/Desktop/data/lung/data'
+ANNOTATIONS_PATH = '/home/david/Desktop/data/lung/csv'
 #ANNOTATIONS_PATH = '/input/Tianchi/dataset/csv'
-PREPROCESS_PATH = './preprocess'
+PREPROCESS_PATH = '/home/david/Desktop/data/lung/preprocess'
 #PREPROCESS_PATH = '/input/Tianchi/preprocess2'
 LOG_BASE_PATH = './output/training_logs'
 #LOG_BASE_PATH = '/output/training_logs'
