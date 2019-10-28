@@ -1,14 +1,15 @@
+import tensorflow as tf
 # Global
-'''
 DATASET_PATH = '/home/david/Desktop/data/lung/data'
 ANNOTATIONS_PATH = '/home/david/Desktop/data/lung/csv'
 #ANNOTATIONS_PATH = '/input/Tianchi/dataset/csv'
-PREPROCESS_PATH = '/home/david/Desktop/data/lung/preprocess'
+PREPROCESS_PATH = '/run/media/david/fe4f1063-693b-466f-9e15-7c699b5f3e55/lung/preprocess/'
 #PREPROCESS_PATH = '/input/Tianchi/preprocess2'
 LOG_BASE_PATH = './output/training_logs'
 #LOG_BASE_PATH = '/output/training_logs'
-'''
 
+
+'''
 DATASET_PATH = 'D:\\韩霖借用-19大创\\temp\\lung'
 ANNOTATIONS_PATH = 'D:\\韩霖借用-19大创\\temp\\lung\\csv'
 #ANNOTATIONS_PATH = '/input/Tianchi/dataset/csv'
@@ -16,7 +17,7 @@ PREPROCESS_PATH = 'D:\\韩霖借用-19大创\\temp\\preprocess'
 #PREPROCESS_PATH = '/input/Tianchi/preprocess2'
 LOG_BASE_PATH = './output/training_logs'
 #LOG_BASE_PATH = '/output/training_logs'
-
+'''
 MSG_LOG_FILE = '{}/log.log'.format(LOG_BASE_PATH)
 TRAIN_VAL_RATIO = 0.7
 

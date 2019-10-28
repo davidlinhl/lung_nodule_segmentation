@@ -1,8 +1,8 @@
-from keras.models import Model
-from keras.layers import Input, Conv3D, MaxPooling3D, UpSampling3D, concatenate
-from keras.callbacks import Callback
-from keras.optimizers import Adam
-from keras import backend as K
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Input, Conv3D, MaxPooling3D, UpSampling3D, concatenate
+from tensorflow.keras.callbacks import Callback
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras import backend as K
 from config import *
 from generators import get_seg_batch
 from skimage import morphology, measure, segmentation

@@ -51,7 +51,8 @@ def get_tumor_records():
 
     records = pd.read_csv('{}/train/annotations.csv'.format(ANNOTATIONS_PATH))
     records[fields] = records['seriesuid'].apply(fill_info)
-    records.dropna(inplace=True)
+    # records.dropna(inplace=True)
+    print(records)
 
     print('tumor record size {}'.format(records.shape))
     if DEBUG_ONLY_TRAIN_FINE_CUT_BIG_TUMOR_SWITCHER:

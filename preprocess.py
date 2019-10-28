@@ -22,38 +22,39 @@ def preprocess():
 
     counter = 0
     for f in ct_files:
-        seriesuid = f[-14:-4]
-        if seriesuid in handled_ids:
-            print('{} handled'.format(seriesuid))
-            continue
+	    if f!="/home/david/Desktop/data/lung/data/test_subset01/LKDS-00322.mhd" and f!="/home/david/Desktop/data/lung/data/val_subset04/LKDS-00960.mhd" and f!="/home/david/Desktop/data/lung/data/val_subset03/LKDS-00656.mhd":
+	        seriesuid = f[-14:-4]
+	        if seriesuid in handled_ids:
+	            print('{} handled'.format(seriesuid))
+	            continue
 
-        counter += 1
-        print('{} process {}'.format(counter, f))
+	        counter += 1
+	        print('{} process {}'.format(counter, f))
 
-        itk_img = itk.ReadImage(f)
-        img = itk.GetArrayFromImage(itk_img)  # (depth, height, width)
-        img = np.transpose(img, (2, 1, 0))  # (width, height, depth)
+	        itk_img = itk.ReadImage(f)
+	        img = itk.GetArrayFromImage(itk_img)  # (depth, height, width)
+	        img = np.transpose(img, (2, 1, 0))  # (width, height, depth)
 
-        origin = np.array(itk_img.GetOrigin())
-        spacing = np.array(itk_img.GetSpacing())
+	        origin = np.array(itk_img.GetOrigin())
+	        spacing = np.array(itk_img.GetSpacing())
 
-        _start_time = time.time()
-        img, pixels = get_lung_img(img)
-        duration = time.time() - _start_time
-        cover_ratio = pixels / np.prod(img.shape)
+	        _start_time = time.time()
+	        img, pixels = get_lung_img(img)
+	        duration = time.time() - _start_time
+	        cover_ratio = pixels / np.prod(img.shape)
 
-        meta = {
-            'seriesuid': seriesuid,
-            'shape': img.shape,
-            'origin': origin,
-            'spacing': spacing,
-            'pixels': pixels,
-            'cover_ratio': cover_ratio,
-            'process_duration': duration,
-        }
-        save_to_numpy(seriesuid, img, meta)
+	        meta = {
+	            'seriesuid': seriesuid,
+	            'shape': img.shape,
+	            'origin': origin,
+	            'spacing': spacing,
+	            'pixels': pixels,
+	            'cover_ratio': cover_ratio,
+	            'process_duration': duration,
+	        }
+	        save_to_numpy(seriesuid, img, meta)
 
-        log_msg(meta)
+	        log_msg(meta)
 
     print('all preprocess done')
 

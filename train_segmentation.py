@@ -1,4 +1,4 @@
-from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping
+from tensorflow.keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping
 from model_UNet import get_unet, UNetEvaluator
 from config import *
 from generators import get_seg_batch
