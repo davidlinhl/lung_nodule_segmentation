@@ -1,5 +1,6 @@
 import tensorflow as tf
 # Global
+E:\\lung\\train
 DATASET_PATH = '/home/david/Desktop/data/lung/data'
 ANNOTATIONS_PATH = '/home/david/Desktop/data/lung/csv'
 #ANNOTATIONS_PATH = '/input/Tianchi/dataset/csv'

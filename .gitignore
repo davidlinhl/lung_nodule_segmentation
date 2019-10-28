@@ -5,3 +5,4 @@ dataset/
 preprocess/
 .ipynb_checkpoints/
 play.py
+config.py
