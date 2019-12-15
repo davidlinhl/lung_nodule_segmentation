@@ -34,6 +34,7 @@ def get_meta_dict():
 def get_tumor_records():
     numpy_files = glob('{}/*.h5'.format(PREPROCESS_PATH))
     meta_dict = get_meta_dict()
+    print(meta_dict)
 
     fields = ['img_numpy_file', 'origin', 'spacing', 'shape', 'pixels', 'cover_ratio', 'process_duration']
     def fill_info(seriesuid):
@@ -51,7 +52,7 @@ def get_tumor_records():
 
     records = pd.read_csv('{}/train/annotations.csv'.format(ANNOTATIONS_PATH))
     records[fields] = records['seriesuid'].apply(fill_info)
-    # records.dropna(inplace=True)
+    records.dropna(inplace=True)
     print(records)
 
     print('tumor record size {}'.format(records.shape))
@@ -95,6 +96,7 @@ if re_sample:
 
 # random_offset works iff around_tumor=True
 def get_block(record, around_tumor=True, random_offset=(0, 0, 0), shape=(INPUT_WIDTH, INPUT_HEIGHT, INPUT_DEPTH)):
+    print(record)
     with h5py.File(record['img_numpy_file'], 'r') as hf:
         W, H, D = hf['img'].shape[0], hf['img'].shape[1], hf['img'].shape[2]
 
@@ -148,7 +150,6 @@ def get_seg_batch(batch_size=32, from_train=True, random_choice=False):
                     random.randrange(-TRAIN_SEG_SAMPLE_RANDOM_OFFSET, TRAIN_SEG_SAMPLE_RANDOM_OFFSET),
                     random.randrange(-TRAIN_SEG_SAMPLE_RANDOM_OFFSET, TRAIN_SEG_SAMPLE_RANDOM_OFFSET)
                 ])
-
             X[b,:,:,:,0] = get_block(record, around_tumor=is_positive_sample, random_offset=random_offset,
                                      shape=(INPUT_WIDTH, INPUT_HEIGHT, INPUT_DEPTH))
             y[b,:,:,:,0] = make_seg_mask(record, create_mask=is_positive_sample, random_offset=random_offset)
